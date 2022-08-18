@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="XX管理系统">
+    <meta name="author" content="作者">
+    <meta name="keywords" content="旅游，定制旅游">
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../img/bootstrap-icons-1.8.1/bootstrap-icons.css" type="text/css">
+    <title>XX管理系统</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <!-- 页眉导航版块 start -->
+        <header class="navbar navbar-dark bg-dark shadow navbar-expand-md">
+            <a href="#" class="navbar-brand">XX管理系统</a>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">首页</a>
+                </li>
+                <li class="nav-item active">
+                    <a href="#" class="nav-link">系统管理</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">数据分析</a>
+                </li>
+            </ul>
+            <div class="text-light">
+                <span class="bi-person-circle"></span>
+                <span class="ml-2 mr-4">admin</span>
+                <a href="#" class="text-light">退出</a>
+            </div>
+        </header>
+
+        <div class="d-md-flex">
+            <!-- 侧边栏导航版块 start -->
+            <div id="siderBarReserved" style="min-width: 150px;"></div>
+            <!-- 侧边栏导航版块 end -->
+            <!-- 内容部分版块 start -->
+            <div class="flex-grow-1 pl-4 pt-3 table-responsive">
+                <!-- 内容顶部 start -->
+                <div class="clearfix">
+                    <div class="float-left custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="checkAll">
+                        <label for="checkAll" class="custom-control-label">全选</label>
+                    </div>
+                    <form action="" class="form-inline float-right">
+                        <div class="input-group">
+                            <input type="type" class="form-control" placeholder="搜索">
+                            <div class="input-group-append">
+                                <span class="input-group-text bi-search bg-info text-light"></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- 内容顶部 end -->
+                <!-- 内容中部 start -->
+                <table class="table text-center">
+                    <thead class="bg-light">
+                        <tr>
+                            <th></th>
+                            <th style="min-width:100px" class="align-middle">#</th>
+                            <th class="bi-sort-up-alt align-middle" style="min-width:100px">编号</th>
+                            <th class="bi-sort-down-alt align-middle" style="min-width:100px">酒店名称</th>
+                            <th style="min-width:200px" class="align-middle">地址</th>
+                            <th style="min-width:100px" class="align-middle">联系方式</th>
+                            <th style="min-width:100px" class="align-middle">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="7">
+                                <div id="loadingToast" style="width:350px" class="toast position-absolute"
+                                    data-autohide="false">
+                                    <div class="toast-body">
+                                        <div class="d-flex justify-content-center my-4">
+                                            <strong class="mr-4">加载中</strong>
+                                            <div class="spinner-border text-info"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="loadingFailToast" data-delay="5000" style="width:350px"
+                                    class="toast position-absolute">
+                                    <div class="toast-body">
+                                        <p class="m-4">数据加载失败</p>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- 内容中部 end -->
+                <!-- 内容底部 start -->
+                <div class="clearfix mt-3">
+                    <div class="float-left">
+                        <button class="btn btn-danger bi-trash">批量删除</button>
+                    </div>
+                    <nav class="float-right">
+                        <ul class="pagination">
+                            <li class="page-item"><a href="#" class="page-link bi-chevron-double-left"></a></li>
+                            <li class="page-item"><a href="#" class="page-link">1</a></li>
+                            <li class="page-item"><a href="#" class="page-link bi-chevron-double-right"></a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- 内容底部 end -->
+            </div>
+            <!-- 内容部分版块 end -->
+        </div>
+        <!-- 页脚版块 start -->
+        <footer class="text-right">
+            <p>Copyright © 2020 XXXXXXXXXX co., Ltd. All Right Reserved</p>
+            <p>深圳XXXXX旅游有限公司 粤ICP备XXXXXXXXXX号</p>
+        </footer>
+        <!-- 页脚版块 end -->
+        <div class="modal" id="delModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body text-center" style="font-size: 20px;">
+                        删除选中的线路?
+                    </div>
+                    <div class="modal-footer">
+                        <button data-mismiss="modal" type="button" class="btn btn-secondary">关闭</button>
+                        <button type="button" class="btn btn-danger">确认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="updateModal">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content" style="min-width:360px">
+                    <div class="modal-body px-4">
+                        <form action="" class="was-validated" id="updateForm">
+                            <div class="form-group d-flex justify-content-left">
+                                <label for="id" class="col-form-label" style="min-width:100px">编号</label>
+                                <input type="text" readonly class="form-control-plaintext text-danger" id="id" name="id" value="编号">
+                            </div>
+                            <div class="form-group">
+                                <label for="name">名称
+                                    <span class="text-danger ml-1">*</span>
+                                </label>
+                                <input style="min-width: 300px" required pattern="[\u4E00-\u9FA5_a-zA-Z0-9_]{3,20}" type="text" class="form-control" id="name" name="name" placeholder="3-20个字">
+                                <div class="invalid-feedback">
+                                    请输入3-20个中文字/字母/数字
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="addr" style="min-width: 100px;">地址<span class="text-danger ml-1">*</span></label>
+                                <input style="min-width:300px" required type="text" class="form-control" id="addr" name="addr" placeholder="3-20字">
+                                <div class="invalid-feedback">
+                                    请输入地址
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="mobile">联系电话<span class="text-danger ml-1">*</span></label>
+                                <input style="min-width:300px" required type="text" class="form-control" id="mobile" name="mobile" placeholder="手机号码">
+                                <div class="invalid-feedback">
+                                    请输入手机号码
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                        <button type="button" id="update" class="btn btn-danger">修改</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/TSMsys.menuAjax.js"></script>
+    <script src="../js/mock.js"></script>
+    <script src="../data/mockData.js"></script>
+    <script src="../js/TSMsys.hotelsAjax.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="XX管理系统">
+    <meta name="author" content="作者">
+    <meta name="keywords" content="旅游，定制旅游">
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../img/bootstrap-icons-1.8.1/bootstrap-icons.css" type="text/css">
+    <title>添加线路管理系统</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <!-- 页眉导航版块 start -->
+        <header class="navbar navbar-dark bg-dark shadow navbar-expand-md">
+            <a href="#" class="navbar-brand">XX管理系统</a>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">首页</a>
+                </li>
+                <li class="nav-item active">
+                    <a href="#" class="nav-link">系统管理</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">数据分析</a>
+                </li>
+            </ul>
+            <div class="text-light">
+                <span class="bi-person-circle"></span>
+                <span class="ml-2 mr-4">admin</span>
+                <a href="#" class="text-light">退出</a>
+            </div>
+        </header>
+
+        <div class="d-md-flex">
+            <!-- 侧边栏导航版块 start -->
+            <div id="siderBarReserved" style="min-width: 150px;"></div>
+            <!-- 侧边栏导航版块 end -->
+            <!-- 内容版块 start -->
+            <div class="flex-grow-1 pl-4 pt-3">
+                <!-- 选项卡版块 start -->
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a href="#info" class="nav-link active" data-toggle="tab">
+                            <h6>基本信息</h6>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#scheduling" class="nav-link disabled" data-toggle="tab">
+                            <h6>行程</h6>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#pricePane" class="nav-link disabled" data-toggle="tab">
+                            <h6>团费</h6>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#imgPane" class="nav-link disabled" data-toggle="tab">
+                            <h6>图片</h6>
+                        </a>
+                    </li>
+                </ul>
+                <!-- 选项卡内容版块 start -->
+                <div class="tab-content border border-top-0 p-2">
+                    <div class="tab-pane fade show active" id="info">
+                        <form id="infoForm" action="" class="p-3 was-validated">
+                            <div class="form-row">
+                                <div class="form-group col-lg-6">
+                                    <label for="title">名称
+                                        <span class="text-danger ml-1">*</span>
+                                    </label>
+                                    <input required pattern="[\u4E00-\u9FA5_a-zA-Z0-9]{3,20}" type="text"
+                                        class="form-control" id="title" placeholder="不超过20个字">
+                                    <div class="invalid-feedback">请输入3-20个中文字、字母、数字</div>
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <label for="routeType">线路类型
+                                        <span class="text-danger ml-1">*</span>
+                                    </label>
+                                    <select required name="" id="routeType" class="form-control">
+                                        <optionvalue="">选择类型</option>
+                                            <option value="">召集令</option>
+                                            <option value="">私人定制</option>
+                                    </select>
+                                    <div class="invalid-feedback">请选择线路类型</div>
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <label for="days">行程天数
+                                        <span class="text-danger ml-1">*</span>
+                                    </label>
+                                    <input required type="number" class="form-control" id="days">
+                                    <div class="invalid-feedback">请输入行程天数</div>
+                                </div>
+                                <div class="form-group col-lg-2">
+                                    <label for="groupSize">成团人数
+                                        <span class="text-danger ml-1">*</span>
+                                    </label>
+                                    <input required type="number" class="form-control" id="groupSize">
+                                    <div class="invalid-feedback">请输入成团人数</div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-lg-6">
+                                    <label for="inputProvince">集合地点
+                                        <span class="text-danger ml-1">*</span>
+                                    </label>
+                                    <div class="d-flex">
+                                        <div class="flex-fill mr-3">
+                                            <select name="" required id="inputProvince" class="form-control mr-3">
+                                                <option value="">省</option>
+                                                <option value="">安徽</option>
+                                            </select>
+                                            <div class="invalid-feedback">请选择省份</div>
+                                        </div>
+                                        <div class="flex-fill">
+                                            <select name="" required id="inputCity" class="form-control">
+                                                <option value="">市</option>
+                                                <option value="">深圳</option>
+                                            </select>
+                                            <div class="invalid-feedback">请选择市</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label for="">交通方式
+                                        <span class="text-danger ml-1">*</span>
+                                    </label>
+                                    <div class="pt-1 pl-2">
+                                        <div class="form-check form-check-inline">
+                                            <input required type="checkbox" value="airplane" id="airplane"
+                                                class="form-check-input" name="travel">
+                                            <label for="airplane" class="form-check-label">飞机</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input required type="checkbox" value="automobile" id="automobile"
+                                                class="form-check-input" name="travel">
+                                            <label for="automobile" class="form-check-label">汽车</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input required type="checkbox" value="airplane" id="steamship"
+                                                class="form-check-input" name="travel">
+                                            <label for="steamship" class="form-check-label">轮船</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input required type="checkbox" value="automobile" id="else"
+                                                class="form-check-input" name="travel">
+                                            <label for="else" class="form-check-label">其他</label>
+                                        </div>
+                                        <div id="travelTips" class="text-danger mt-2">
+                                            <small>请选择交通方式</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-lg-6">
+                                    <label for="priceStatement">价格说明
+                                        <span class="text-danger ml-1">*</span>
+                                    </label>
+
+                                    <div class="d-flex">
+                                        <div class="flex-fill">
+                                            <textarea style="height: 100px;" id="priceStatement"
+                                                class="col-lg-12"></textarea>
+                                        </div>
+                                        <div class="invalid-feedback">请输入价格说明</div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label for="tips">提示
+                                        <span class="text-danger ml-1">*</span>
+                                    </label>
+                                    <div class="d-flex">
+                                        <textarea style="height: 100px;" id="tips" class="col-lg-12"
+                                            placeholder="不超过50字"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="ml-3 mb-3">
+                            <button type="button" class="btn btn-success" id="next1">下一步</button>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="scheduling">
+                        <form action="" class="p-3">
+                            <div class="card mb-2">
+                                <h6 class="card-header bg-light text-info bi-patch-plus" data-toggle="collapse"
+                                    data-target="#day1">
+                                    第1天
+                                </h6>
+                                <div class="collapse fade" id="day1">
+                                    <div class="card-body">
+                                        <div class="form-row d-lg-flex">
+                                            <div class="form-group flex-lg-fill mx-2">
+                                                <label for="scheduling1">日程
+                                                    <span class="text-danger ml-1">*</span>
+                                                </label>
+                                                <textarea class="form-control" style="height: 100px;" id="scheduling1"
+                                                    class="col-lg-12" placeholder="不超过200字"></textarea>
+                                            </div>
+                                            <div class="form-group flex-lg-fill mx-2">
+                                                <label for="birds1">目标鸟种</label>
+                                                <textarea class="form-control" style="height: 100px;" id="birds1"
+                                                    class="col-lg-12" placeholder="不超过50字"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="ml-3 mb-3">
+                            <button type="button" class="btn btn-success" id="next2">下一步</button>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pricePane">
+                        <div class="bg-light mb-3 ml-3 font-weight-bolder btn-group">
+                            <button class="btn border">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input position-static" id="checkAll"
+                                        title="全选">
+                                </div>
+                            </button>
+                            <button type="button" id="delete" title="批量删除"
+                                class="btn border text-danger bi-trash-fill"></button>
+                            <button type="button" id="recover" title="撤销删除"
+                                class="btn border text-success bi-reply-fill"></button>
+                            <button type="button" id="add" title="添加团次"
+                                class="btn border text-info bi-calendar-plus-fill"></button>
+                        </div>
+                        <div id="recoverAlert" style="width: 250px;" class="alert alert-danger alert-dismissible">
+                            <p>没有可恢复的编辑条目</p>
+                            <a href="" class="close">&times;</a>
+                        </div>
+                        <form action="" class="p-3">
+                            <table class="table text-center table-borderless table-sm" style="max-width: 400px;">
+                                <thead>
+                                    <th></th>
+                                    <th>团费(元)</th>
+                                    <th>出团日期</th>
+                                </thead>
+                                <tbody id="inputTable">
+                                    <tr>
+                                        <td class="align-middle">
+                                            <input type="checkbox" class="ml-2">
+                                        </td>
+                                        <td><input type="text" class="form-control mx-auto" style="max-width: 100px;">
+                                        </td>
+                                        <td><input type="date" class="form-control mx-auto" style="max-width: 220px;">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="align-middle">
+                                            <input type="checkbox" class="ml-2">
+                                        </td>
+                                        <td><input type="text" class="form-control mx-auto" style="max-width: 100px;">
+                                        </td>
+                                        <td><input type="date" class="form-control mx-auto" style="max-width: 220px;">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                        <div class="ml-3 mb-3">
+                            <button type="button" class="btn btn-success" id="next3">下一步</button>
+                        </div>
+                    </div>
+
+
+                    <div class="tab-pane fade " id="imgPane">
+                        <form action="" class="p-3">
+                            <div class="custom-file" style="max-width: 400px;">
+                                <input type="file" class="custom-file-input" id="uploadFile">
+                                <label for="uploadFile" class="custom-file-label" data-browse="选择图片"></label>
+                            </div>
+                        </form>
+                        <div class="ml-3 mb-3">
+                            <button class="btn btn-success" type="button" id="submit">提交</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 选项卡内容版块 end -->
+                <!-- 选项卡版块 end -->
+            </div>
+        </div>
+        <!-- 页脚版块 start -->
+        <footer class="text-right">
+            <p>Copyright © 2020 XXXXXXXXXX co., Ltd. All Right Reserved</p>
+            <p>深圳XXXXX旅游有限公司 粤ICP备XXXXXXXXXX号</p>
+        </footer>
+        <!-- 页脚版块 end -->
+        <div class="modal" id="delModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body text-center" style="font-size: 20px;">
+                        删除选中的线路?
+                    </div>
+                    <div class="modal-footer">
+                        <button data-mismiss="modal" type="button" class="btn btn-secondary">关闭</button>
+                        <button type="button" class="btn btn-danger">确认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/TSMsys.menu.js"></script>
+    <script src="../js/TSMsys.addRoute.js"></script>
+    <script src="../js/TSMsys.menuAjax.js"></script>
+</body>
+
+</html>
